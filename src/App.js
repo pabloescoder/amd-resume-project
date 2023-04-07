@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import Homepage from "./components/Homepage";
 import BasicDetails from "./components/BasicDetails/BasicDetails";
+import WorkHistory from "./components/WorkHistory/WorkHistory";
 
 function App() {
   const [currentSection, setCurrentSection] = useState(0);
-
   const [basicData, setBasicData] = useState({
     firstName: "",
     lastName: "",
@@ -33,7 +33,7 @@ function App() {
   };
 
   const decrementCurrentSection = () => {
-    setCurrentSection((prevValue) => prevValue + 1);
+    setCurrentSection((prevValue) => prevValue - 1);
   };
 
   return (
@@ -44,6 +44,12 @@ function App() {
           nextPage={incrementCurrentSection}
           basicData={basicData}
           onChange={handleBasicDataChange}
+        />
+      )}
+      {currentSection === 2 && (
+        <WorkHistory
+          nextPage={incrementCurrentSection}
+          prevPage={decrementCurrentSection}
         />
       )}
     </div>
