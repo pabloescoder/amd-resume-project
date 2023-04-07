@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import Homepage from "./components/Homepage";
+import BasicDetails from "./components/BasicDetails/BasicDetails";
 
 function App() {
   const [currentSection, setCurrentSection] = useState(0);
@@ -15,7 +16,9 @@ function App() {
   return (
     <div className="App">
       {currentSection === 0 && <Homepage nextPage={incrementCurrentSection} />}
-      {currentSection === 1 && <div>Hellooo</div>}
+      {currentSection === 1 && (
+        <BasicDetails nextPage={incrementCurrentSection} />
+      )}
     </div>
   );
 }

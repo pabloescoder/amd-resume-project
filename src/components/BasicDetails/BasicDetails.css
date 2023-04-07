@@ -1,0 +1,33 @@
+.basic-details-section {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  background: #5433ff; /* fallback for old browsers */
+  background: -webkit-linear-gradient(
+    to bottom right,
+    #a5fecb,
+    #20bdff,
+    #5433ff
+  ); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(
+    to bottom right,
+    #a5fecb,
+    #20bdff,
+    #5433ff
+  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
+.basic-details-container {
+  margin: 3rem;
+  padding: 2rem;
+  align-self: center;
+  border-radius: 20px;
+  width: 80%;
+  background-color: aliceblue;
+}
+
+@media screen and (max-width: 380px) {
+  .basic-details-container {
+    padding: 1rem;
+  }
+}

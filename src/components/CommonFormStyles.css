@@ -1,0 +1,105 @@
+.form-container h2 {
+  margin: 0;
+  font-family: "Inter", sans-serif;
+  font-weight: 400;
+  font-size: 1.25rem;
+  text-align: center;
+}
+
+.form-container .form-section {
+  display: flex;
+  margin: 0.5rem 0;
+}
+
+/* Form input CSS designed by Lucas Oliveira */
+.form_group {
+  position: relative;
+  padding: 15px 0 0;
+  margin-top: 10px;
+  width: 50%;
+}
+
+.form_field {
+  font-family: "Inter", sans-serif;
+  font-weight: 300;
+  width: 70%;
+  border: 0;
+  border-bottom: 2px solid #9b9b9b;
+  outline: 0;
+  font-size: 1.3rem;
+  color: #000;
+  padding: 7px 0;
+  background: transparent;
+  transition: border-color 0.2s;
+}
+
+.three-in-a-row .form_field {
+  width: 80%;
+}
+
+.form_field::placeholder {
+  color: transparent;
+}
+
+.form_field:placeholder-shown ~ .form_label {
+  font-size: 1.2rem;
+  cursor: text;
+  top: 20px;
+}
+
+.form_label {
+  position: absolute;
+  top: 0;
+  display: block;
+  transition: 0.2s;
+  font-size: 1rem;
+  color: #9b9b9b;
+}
+
+.form_field:focus {
+  padding-bottom: 6px;
+  font-weight: 400;
+  border-width: 3px;
+  border-image: linear-gradient(to right, #11998e, #38ef7d);
+  border-image-slice: 1;
+}
+.form_field:focus ~ .form_label {
+  position: absolute;
+  top: 0;
+  display: block;
+  transition: 0.2s;
+  font-size: 1rem;
+  color: #11998e;
+  font-weight: 700;
+}
+
+/* reset input */
+.form_field:required,
+.form_field:invalid {
+  box-shadow: none;
+}
+
+@media screen and (max-width: 600px) {
+  .form-container .form-section {
+    flex-direction: column;
+    align-items: center;
+  }
+  .form_group {
+    width: 80%;
+  }
+  .form_field {
+    width: 100%;
+  }
+  .three-in-a-row .form_field {
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 380px) {
+  .form_field {
+    font-size: 1.2rem;
+  }
+  .form_field:placeholder-shown ~ .form_label {
+    font-size: 1rem;
+  }
+}
