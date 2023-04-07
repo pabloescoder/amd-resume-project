@@ -1,13 +1,12 @@
 import React from "react";
 import "../CommonFormStyles.css";
-import "./BasicDetails.css";
 import "../NavigationArrows";
 import NavigationArrows from "../NavigationArrows";
 
 const BasicDetails = (props) => {
   return (
-    <div className="basic-details-section">
-      <div className="basic-details-container">
+    <div className="common-section">
+      <div className="common-container">
         <div className="form-container">
           <h2>Let's start with some basic details about you...</h2>
           <form>
