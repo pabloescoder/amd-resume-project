@@ -9,18 +9,20 @@ const BasicDetails = (props) => {
     <div className="basic-details-section">
       <div className="basic-details-container">
         <div className="form-container">
-          <h2>Let's start with some basic details about you</h2>
+          <h2>Let's start with some basic details about you...</h2>
           <form>
             <div className="form-section">
               <div className="form_group field">
                 <input
                   className="form_field"
                   placeholder="First Name"
-                  name="first-name"
-                  id="first-name"
+                  name="firstName"
+                  id="firstName"
+                  value={props.basicData.firstname}
+                  onChange={(e) => props.onChange(e)}
                   required
                 />
-                <label htmlFor="first-name" className="form_label">
+                <label htmlFor="firstName" className="form_label">
                   First Name
                 </label>
               </div>
@@ -28,11 +30,13 @@ const BasicDetails = (props) => {
                 <input
                   className="form_field"
                   placeholder="Last Name"
-                  name="last-name"
-                  id="last-name"
+                  name="lastName"
+                  id="lastName"
+                  value={props.basicData.lastName}
+                  onChange={(e) => props.onChange(e)}
                   required
                 />
-                <label htmlFor="last-name" className="form_label">
+                <label htmlFor="lastName" className="form_label">
                   Last Name
                 </label>
               </div>
@@ -45,6 +49,8 @@ const BasicDetails = (props) => {
                   placeholder="Profession"
                   name="profession"
                   id="profession"
+                  value={props.basicData.profession}
+                  onChange={(e) => props.onChange(e)}
                   required
                 />
                 <label htmlFor="profession" className="form_label">
@@ -57,6 +63,8 @@ const BasicDetails = (props) => {
                   placeholder="City"
                   name="city"
                   id="city"
+                  value={props.basicData.city}
+                  onChange={(e) => props.onChange(e)}
                   required
                 />
                 <label htmlFor="city" className="form_label">
@@ -69,6 +77,8 @@ const BasicDetails = (props) => {
                   placeholder="Country"
                   name="country"
                   id="country"
+                  value={props.basicData.country}
+                  onChange={(e) => props.onChange(e)}
                   required
                 />
                 <label htmlFor="country" className="form_label">
@@ -84,6 +94,8 @@ const BasicDetails = (props) => {
                   placeholder="Pincode/Zip"
                   name="pincode"
                   id="pincode"
+                  value={props.basicData.pincode}
+                  onChange={(e) => props.onChange(e)}
                   required
                 />
                 <label htmlFor="pincode" className="form_label">
@@ -96,6 +108,8 @@ const BasicDetails = (props) => {
                   placeholder="Phone No."
                   name="phone"
                   id="phone"
+                  value={props.basicData.phone}
+                  onChange={(e) => props.onChange(e)}
                   required
                 />
                 <label htmlFor="phone" className="form_label">
@@ -111,6 +125,8 @@ const BasicDetails = (props) => {
                   placeholder="Email"
                   name="email"
                   id="email"
+                  value={props.basicData.email}
+                  onChange={(e) => props.onChange(e)}
                   required
                 />
                 <label htmlFor="email" className="form_label">
@@ -123,6 +139,8 @@ const BasicDetails = (props) => {
                   placeholder="Github (Optional)"
                   name="github"
                   id="github"
+                  value={props.basicData.github}
+                  onChange={(e) => props.onChange(e)}
                 />
                 <label htmlFor="github" className="form_label">
                   Github (Optional)
@@ -137,6 +155,8 @@ const BasicDetails = (props) => {
                   placeholder="LinkedIn (Optional)"
                   name="linkedin"
                   id="linkedin"
+                  value={props.basicData.linkedin}
+                  onChange={(e) => props.onChange(e)}
                 />
                 <label htmlFor="linkedin" className="form_label">
                   LinkedIn (Optional)
@@ -148,6 +168,8 @@ const BasicDetails = (props) => {
                   placeholder="Twitter (Optional)"
                   name="twitter"
                   id="twitter"
+                  value={props.basicData.twitter}
+                  onChange={(e) => props.onChange(e)}
                 />
                 <label htmlFor="twitter" className="form_label">
                   Twitter (Optional)
