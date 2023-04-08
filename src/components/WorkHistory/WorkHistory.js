@@ -4,27 +4,28 @@ import NavigationArrows from "../NavigationArrows";
 import "../CommonFormStyles.css";
 
 const WorkHistory = (props) => {
-  const [numOfSections, setNumOfSections] = useState([{ id: 1 }]);
-
-  const workSectionElements = numOfSections.map((object) => (
-    <WorkSection className="work-section" key={object.id} id={object.id} />
+  const workSectionElements = props.workData.map((object) => (
+    <WorkSection
+      className="work-section"
+      key={object.id}
+      id={object.id}
+      workData={props.workData}
+      onChange={props.onChange}
+      handleEditorChange={props.handleEditorChange}
+    />
   ));
 
   const addSection = () => {
-    const lastSectionId = numOfSections[numOfSections.length - 1].id;
-    setNumOfSections((prevValue) => {
-      return [...prevValue, { id: lastSectionId + 1 }];
-    });
+    const lastSectionId = props.workData[props.workData.length - 1].id;
+    props.handleAddSection(lastSectionId + 1);
   };
 
   const deleteLastSection = () => {
-    const lastSectionId = numOfSections[numOfSections.length - 1].id;
+    const lastSectionId = props.workData[props.workData.length - 1].id;
     if (lastSectionId === 1) {
       return;
     }
-    setNumOfSections((prevValue) => {
-      return prevValue.filter((object) => object.id !== lastSectionId);
-    });
+    props.handleRemoveLastSection(lastSectionId);
   };
 
   const workHistoryContainerStyles = {

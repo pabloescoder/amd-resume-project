@@ -1,12 +1,54 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "../CommonFormStyles.css";
-import { EditorState } from "draft-js";
-import RichTextEditor from "../RichTextEditor";
+import { EditorState, ContentState } from "draft-js";
+import { Editor } from "react-draft-wysiwyg";
+import "../../../node_modules/react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
 
 const WorkSection = (props) => {
   const [editorState, setEditorState] = useState(() =>
     EditorState.createEmpty()
   );
+
+  const toolbarOptions = [
+    "inline",
+    "blockType",
+    "fontSize",
+    "fontFamily",
+    "list",
+    "colorPicker",
+    "link",
+    "embedded",
+    "emoji",
+  ];
+
+  useEffect(() => {
+    if (editorState.getCurrentContent().getPlainText("\u0001") !== "") {
+      props.handleEditorChange(
+        undefined,
+        props.id,
+        "jobDescription",
+        editorState.getCurrentContent().getPlainText("\u0001")
+      );
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [editorState]);
+
+  useEffect(() => {
+    if (
+      props.workData[props.id - 1] &&
+      props.workData[props.id - 1].jobDescription !== ""
+    ) {
+      setEditorState(
+        EditorState.createWithContent(
+          ContentState.createFromText(
+            props.workData[props.id - 1].jobDescription
+          )
+        )
+      );
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
   return (
     <section>
       <div className="form-section">
@@ -16,8 +58,11 @@ const WorkSection = (props) => {
             placeholder="Job Title"
             name="jobTitle"
             id="jobTitle"
-            // value={props.basicData.firstname}
-            // onChange={(e) => props.onChange(e)}
+            value={
+              props.workData[props.id - 1] &&
+              props.workData[props.id - 1].jobTitle
+            }
+            onChange={(e) => props.onChange(e, props.id)}
             required
           />
           <label htmlFor="jobTitle" className="form_label">
@@ -30,8 +75,11 @@ const WorkSection = (props) => {
             placeholder="Employer"
             name="employer"
             id="employer"
-            // value={props.basicData.lastName}
-            // onChange={(e) => props.onChange(e)}
+            value={
+              props.workData[props.id - 1] &&
+              props.workData[props.id - 1].employer
+            }
+            onChange={(e) => props.onChange(e, props.id)}
             required
           />
           <label htmlFor="employer" className="form_label">
@@ -39,7 +87,6 @@ const WorkSection = (props) => {
           </label>
         </div>
       </div>
-
       <div className="form-section">
         <div className="form_group field">
           <input
@@ -47,8 +94,10 @@ const WorkSection = (props) => {
             placeholder="City"
             name="city"
             id="city"
-            // value={props.basicData.firstname}
-            // onChange={(e) => props.onChange(e)}
+            value={
+              props.workData[props.id - 1] && props.workData[props.id - 1].city
+            }
+            onChange={(e) => props.onChange(e, props.id)}
             required
           />
           <label htmlFor="city" className="form_label">
@@ -61,8 +110,11 @@ const WorkSection = (props) => {
             placeholder="Country"
             name="country"
             id="country"
-            // value={props.basicData.lastName}
-            // onChange={(e) => props.onChange(e)}
+            value={
+              props.workData[props.id - 1] &&
+              props.workData[props.id - 1].country
+            }
+            onChange={(e) => props.onChange(e, props.id)}
             required
           />
           <label htmlFor="country" className="form_label">
@@ -70,7 +122,6 @@ const WorkSection = (props) => {
           </label>
         </div>
       </div>
-
       <div className="form-section">
         <div className="form_group field">
           <input
@@ -78,8 +129,11 @@ const WorkSection = (props) => {
             placeholder="Start Date"
             name="startDate"
             id="startDate"
-            // value={props.basicData.firstname}
-            // onChange={(e) => props.onChange(e)}
+            value={
+              props.workData[props.id - 1] &&
+              props.workData[props.id - 1].startDate
+            }
+            onChange={(e) => props.onChange(e, props.id)}
             required
           />
           <label htmlFor="startDate" className="form_label">
@@ -92,8 +146,11 @@ const WorkSection = (props) => {
             placeholder="End Date"
             name="endDate"
             id="endDate"
-            // value={props.basicData.lastName}
-            // onChange={(e) => props.onChange(e)}
+            value={
+              props.workData[props.id - 1] &&
+              props.workData[props.id - 1].endDate
+            }
+            onChange={(e) => props.onChange(e, props.id)}
             required
           />
           <label htmlFor="endDate" className="form_label">
@@ -101,7 +158,15 @@ const WorkSection = (props) => {
           </label>
         </div>
       </div>
-      <RichTextEditor editorState={editorState} onChange={setEditorState} />
+      <Editor
+        editorState={editorState}
+        toolbarClassName="editor-toolbar"
+        wrapperClassName="editor-wrapper"
+        placeholder="Enter the job description..."
+        editorClassName="editor"
+        onEditorStateChange={setEditorState}
+        toolbar={{ options: toolbarOptions }}
+      />
     </section>
   );
 };
