@@ -4,6 +4,7 @@ import BasicDetails from "./components/BasicDetails/BasicDetails";
 import WorkHistory from "./components/WorkHistory/WorkHistory";
 import EducationMain from "./components/Education/EducationMain";
 import TechnologiesMain from "./components/Technologies/TechnologiesMain";
+import CertificationsMain from "./components/Certifications/CertificationsMain";
 
 function App() {
   const [currentSection, setCurrentSection] = useState(0);
@@ -58,7 +59,13 @@ function App() {
     },
   ]);
 
-  console.log(technologiesData);
+  const [certificationsData, setCertificationsData] = useState([
+    {
+      id: 1,
+      certificateTitle: "",
+      certifyingOrg: "",
+    },
+  ]);
 
   const incrementCurrentSection = () => {
     setCurrentSection((prevValue) => prevValue + 1);
@@ -184,6 +191,35 @@ function App() {
     });
   };
 
+  const handleAddCertSection = (id) => {
+    setCertificationsData((prevData) => {
+      return [
+        ...prevData,
+        {
+          id: id,
+          certificateTitle: "",
+          certifyingOrg: "",
+        },
+      ];
+    });
+  };
+
+  const handleRemoveLastCertSection = (id) => {
+    setCertificationsData((prevValue) =>
+      prevValue.filter((object) => object.id !== id)
+    );
+  };
+
+  const handleCertDataChange = (event, id) => {
+    setCertificationsData((prevData) => {
+      return prevData.map((object) =>
+        object.id === id
+          ? { ...object, [event.target.name]: event.target.value }
+          : object
+      );
+    });
+  };
+
   return (
     <div className="App">
       {currentSection === 0 && <Homepage nextPage={incrementCurrentSection} />}
@@ -223,6 +259,15 @@ function App() {
           handleAddSection={handleAddTechSection}
           handleRemoveLastSection={handleRemoveLastTechSection}
           onChange={handleTechDataChange}
+        />
+      )}
+      {currentSection === 5 && (
+        <CertificationsMain
+          prevPage={decrementCurrentSection}
+          certificationsData={certificationsData}
+          handleAddSection={handleAddCertSection}
+          handleRemoveLastSection={handleRemoveLastCertSection}
+          onChange={handleCertDataChange}
         />
       )}
     </div>
