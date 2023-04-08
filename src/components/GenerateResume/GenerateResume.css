@@ -11,7 +11,8 @@
   font-size: 1.5rem;
 }
 
-#generate-resume-btn {
+#generate-resume-btn,
+#go-back-btn {
   align-self: center;
   appearance: none;
   background-color: transparent;
@@ -43,26 +44,37 @@
   will-change: transform;
 }
 
-#generate-resume-btn:disabled {
+#generate-resume-btn:disabled,
+#go-back-btn:disabled {
   pointer-events: none;
 }
 
-#generate-resume-btn:hover {
+#generate-resume-btn:hover,
+#go-back-btn:hover {
   color: #fff;
   background-color: #1a1a1a;
   box-shadow: rgba(0, 0, 0, 0.25) 0 8px 15px;
   transform: translateY(-2px);
 }
 
-#generate-resume-btn:active {
+#generate-resume-btn:active,
+#go-back-btn:hover {
   box-shadow: none;
   transform: translateY(0);
 }
 
+#generate-resume-btn {
+  margin-right: 1rem;
+}
+
+#go-back-btn {
+  margin-left: 1rem;
+}
+
 .generate-resume-container {
-  width: 70%;
   max-width: 900px;
-  margin: 0 15%;
+  min-width: 900px;
+  margin: 0 auto;
   border: 1px solid black;
   min-height: 100vh;
 }
