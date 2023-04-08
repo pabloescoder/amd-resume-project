@@ -87,6 +87,7 @@ const WorkSection = (props) => {
           </label>
         </div>
       </div>
+
       <div className="form-section">
         <div className="form_group field">
           <input
@@ -122,6 +123,7 @@ const WorkSection = (props) => {
           </label>
         </div>
       </div>
+
       <div className="form-section">
         <div className="form_group field">
           <input
@@ -158,6 +160,7 @@ const WorkSection = (props) => {
           </label>
         </div>
       </div>
+
       <Editor
         editorState={editorState}
         toolbarClassName="editor-toolbar"
