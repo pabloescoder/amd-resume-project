@@ -189,6 +189,18 @@ button[type="add-new-section"]:active {
   border: 1px solid #ccc;
 }
 
+.form-container textarea {
+  appearance: none;
+  margin-top: 1.5rem;
+  font-family: "Inter", sans-serif;
+  font-size: 1.25rem;
+  width: 90%;
+  max-width: 95%;
+  border-width: 3px;
+  border-radius: 15px;
+  padding: 1rem 2rem;
+}
+
 @media screen and (max-width: 715px) {
   .add-and-delete-buttons {
     flex-direction: column;

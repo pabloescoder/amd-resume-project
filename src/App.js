@@ -42,6 +42,7 @@ function App() {
       fieldOfStudy: "",
       startDate: "",
       endDate: "",
+      eduDescription: "",
     },
   ]);
 

@@ -113,6 +113,16 @@ const EducationSection = (props) => {
           </label>
         </div>
       </div>
+      <textarea
+        placeholder="Add a description (optional)"
+        rows={6}
+        name="eduDescription"
+        value={
+          props.educationData[props.id - 1] &&
+          props.educationData[props.id - 1].eduDescription
+        }
+        onChange={(e) => props.onChange(e, props.id)}
+      ></textarea>
     </section>
   );
 };
