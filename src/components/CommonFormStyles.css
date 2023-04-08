@@ -211,6 +211,10 @@ button[type="add-new-section"]:active {
   .add-and-delete-buttons button:nth-last-of-type(1) {
     margin-bottom: 1rem;
   }
+  .form-container textarea {
+    width: 80%;
+    max-width: 80%;
+  }
 }
 
 @media screen and (max-width: 600px) {
@@ -237,6 +241,10 @@ button[type="add-new-section"]:active {
   .add-and-delete-buttons button {
     width: 100%;
   }
+  .form-container textarea {
+    width: 75%;
+    max-width: 75%;
+  }
 }
 
 @media screen and (max-width: 380px) {
@@ -249,5 +257,9 @@ button[type="add-new-section"]:active {
   .common-container {
     padding: 1rem;
     margin: 2rem;
+  }
+  .form-container textarea {
+    width: 70%;
+    max-width: 70%;
   }
 }
