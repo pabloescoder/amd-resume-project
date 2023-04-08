@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import WorkSection from "./WorkSection";
 import NavigationArrows from "../NavigationArrows";
 import "../CommonFormStyles.css";

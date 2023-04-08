@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import Homepage from "./components/Homepage";
 import BasicDetails from "./components/BasicDetails/BasicDetails";
 import WorkHistory from "./components/WorkHistory/WorkHistory";
+import EducationMain from "./components/Education/EducationMain";
 
 function App() {
   const [currentSection, setCurrentSection] = useState(0);
@@ -32,7 +33,26 @@ function App() {
     },
   ]);
 
-  console.log(workData);
+  const [educationData, setEducationData] = useState([
+    {
+      id: 1,
+      schoolName: "",
+      schoolLocation: "",
+      degree: "",
+      fieldOfStudy: "",
+      startDate: "",
+      endDate: "",
+    },
+  ]);
+
+  const handleBasicDataChange = (event) => {
+    setBasicData((prevData) => {
+      return {
+        ...prevData,
+        [event.target.name]: event.target.value,
+      };
+    });
+  };
 
   const handleAddWorkSection = (id) => {
     setWorkData((prevData) => {
@@ -76,21 +96,45 @@ function App() {
     });
   };
 
-  const handleBasicDataChange = (event) => {
-    setBasicData((prevData) => {
-      return {
-        ...prevData,
-        [event.target.name]: event.target.value,
-      };
-    });
-  };
-
   const incrementCurrentSection = () => {
     setCurrentSection((prevValue) => prevValue + 1);
   };
 
   const decrementCurrentSection = () => {
     setCurrentSection((prevValue) => prevValue - 1);
+  };
+
+  const handleAddEduSection = (id) => {
+    setEducationData((prevData) => {
+      return [
+        ...prevData,
+        {
+          id: id,
+          schoolName: "",
+          schoolLocation: "",
+          degree: "",
+          fieldOfStudy: "",
+          startDate: "",
+          endDate: "",
+        },
+      ];
+    });
+  };
+
+  const handleRemoveLastEduSection = (id) => {
+    setEducationData((prevValue) =>
+      prevValue.filter((object) => object.id !== id)
+    );
+  };
+
+  const handleEduDataChange = (event, id) => {
+    setEducationData((prevData) => {
+      return prevData.map((object) =>
+        object.id === id
+          ? { ...object, [event.target.name]: event.target.value }
+          : object
+      );
+    });
   };
 
   return (
@@ -112,6 +156,16 @@ function App() {
           handleRemoveLastSection={handleRemoveLastWorkSection}
           onChange={handleWorkDataChange}
           handleEditorChange={handleWorkEditorChange}
+        />
+      )}
+      {currentSection === 3 && (
+        <EducationMain
+          nextPage={incrementCurrentSection}
+          prevPage={decrementCurrentSection}
+          educationData={educationData}
+          handleAddSection={handleAddEduSection}
+          handleRemoveLastSection={handleRemoveLastEduSection}
+          onChange={handleEduDataChange}
         />
       )}
     </div>
