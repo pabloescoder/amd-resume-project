@@ -249,6 +249,7 @@ button[type="add-new-section"]:active,
     width: 100%;
   }
   .form-container textarea {
+    font-size: 1.15rem;
     width: 75%;
     max-width: 75%;
   }
@@ -261,11 +262,18 @@ button[type="add-new-section"]:active,
   .form_field:placeholder-shown ~ .form_label {
     font-size: 1rem;
   }
+  .form_field ~ .form_label {
+    font-size: 1rem;
+  }
+  .form-label {
+    font-size: 1rem;
+  }
   .common-container {
     padding: 1rem;
     margin: 2rem;
   }
   .form-container textarea {
+    font-size: 1.05rem;
     width: 70%;
     max-width: 70%;
   }
