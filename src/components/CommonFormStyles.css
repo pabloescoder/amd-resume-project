@@ -30,7 +30,7 @@
   margin: 0;
   font-family: "Inter", sans-serif;
   font-weight: 400;
-  font-size: 1.25rem;
+  font-size: 1.35rem;
   text-align: center;
 }
 
@@ -119,7 +119,8 @@
   padding-bottom: 1rem;
 }
 
-button[type="add-new-section"] {
+button[type="add-new-section"],
+#generate-resume {
   align-self: center;
   appearance: none;
   background-color: transparent;
@@ -150,18 +151,21 @@ button[type="add-new-section"] {
   will-change: transform;
 }
 
-button[type="add-new-section"]:disabled {
+button[type="add-new-section"]:disabled,
+#generate-resume:disabled {
   pointer-events: none;
 }
 
-button[type="add-new-section"]:hover {
+button[type="add-new-section"]:hover,
+#generate-resume:hover {
   color: #fff;
   background-color: #1a1a1a;
   box-shadow: rgba(0, 0, 0, 0.25) 0 8px 15px;
   transform: translateY(-2px);
 }
 
-button[type="add-new-section"]:active {
+button[type="add-new-section"]:active,
+#generate-resume:active {
   box-shadow: none;
   transform: translateY(0);
 }
@@ -214,6 +218,9 @@ button[type="add-new-section"]:active {
   .form-container textarea {
     width: 80%;
     max-width: 80%;
+  }
+  button[type="add-new-section"]:nth-last-of-type(1) {
+    margin-top: 1rem;
   }
 }
 
