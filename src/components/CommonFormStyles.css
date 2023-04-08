@@ -171,6 +171,24 @@ button[type="add-new-section"]:active {
   justify-content: space-evenly;
 }
 
+.editor-wrapper {
+  padding: 0.5rem;
+  margin-top: 2rem;
+  border: 1px solid #ccc;
+  border-radius: 15px;
+  background-color: rgb(255, 255, 255);
+}
+.editor {
+  background-color: rgb(255, 255, 255);
+  padding: 0rem 1rem;
+  min-height: 12rem;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+.editor-toolbar {
+  border: 1px solid #ccc;
+}
+
 @media screen and (max-width: 715px) {
   .add-and-delete-buttons {
     flex-direction: column;

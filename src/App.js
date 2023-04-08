@@ -19,6 +19,63 @@ function App() {
     twitter: "",
   });
 
+  const [workData, setWorkData] = useState([
+    {
+      id: 1,
+      jobTitle: "",
+      employer: "",
+      city: "",
+      country: "",
+      startDate: "",
+      endDate: "",
+      jobDescription: "",
+    },
+  ]);
+
+  console.log(workData);
+
+  const handleAddWorkSection = (id) => {
+    setWorkData((prevData) => {
+      return [
+        ...prevData,
+        {
+          id: id,
+          jobTitle: "",
+          employer: "",
+          city: "",
+          country: "",
+          startDate: "",
+          endDate: "",
+          jobDescription: "",
+        },
+      ];
+    });
+  };
+
+  const handleRemoveLastWorkSection = (id) => {
+    setWorkData((prevData) => {
+      return prevData.filter((object) => object.id !== id);
+    });
+  };
+
+  const handleWorkDataChange = (event, id) => {
+    setWorkData((prevData) => {
+      return prevData.map((object) =>
+        object.id === id
+          ? { ...object, [event.target.name]: event.target.value }
+          : object
+      );
+    });
+  };
+
+  const handleWorkEditorChange = (event, id, name, value) => {
+    setWorkData((prevData) => {
+      return prevData.map((object) =>
+        object.id === id ? { ...object, [name]: value } : object
+      );
+    });
+  };
+
   const handleBasicDataChange = (event) => {
     setBasicData((prevData) => {
       return {
@@ -50,6 +107,11 @@ function App() {
         <WorkHistory
           nextPage={incrementCurrentSection}
           prevPage={decrementCurrentSection}
+          workData={workData}
+          handleAddSection={handleAddWorkSection}
+          handleRemoveLastSection={handleRemoveLastWorkSection}
+          onChange={handleWorkDataChange}
+          handleEditorChange={handleWorkEditorChange}
         />
       )}
     </div>
