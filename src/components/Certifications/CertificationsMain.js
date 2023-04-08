@@ -48,7 +48,9 @@ const CertificationsMain = (props) => {
             Delete the last section
           </button>
         </div>
-        <button id="generate-resume">Generate Resume!</button>
+        <button id="generate-resume" onClick={props.incrementCurrentSection}>
+          Generate Resume!
+        </button>
         <NavigationArrows prevPage={props.prevPage} />
       </div>
     </div>

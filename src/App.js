@@ -5,6 +5,7 @@ import WorkHistory from "./components/WorkHistory/WorkHistory";
 import EducationMain from "./components/Education/EducationMain";
 import TechnologiesMain from "./components/Technologies/TechnologiesMain";
 import CertificationsMain from "./components/Certifications/CertificationsMain";
+import GenerateResume from "./components/GenerateResume/GenerateResume";
 
 function App() {
   const [currentSection, setCurrentSection] = useState(0);
@@ -268,6 +269,16 @@ function App() {
           handleAddSection={handleAddCertSection}
           handleRemoveLastSection={handleRemoveLastCertSection}
           onChange={handleCertDataChange}
+          incrementCurrentSection={incrementCurrentSection}
+        />
+      )}
+      {currentSection === 6 && (
+        <GenerateResume
+          basicData={basicData}
+          workData={workData}
+          educationData={educationData}
+          technologiesData={technologiesData}
+          certificationsData={certificationsData}
         />
       )}
     </div>
