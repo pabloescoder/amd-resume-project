@@ -2,6 +2,7 @@ import React from "react";
 import NavigationArrows from "../NavigationArrows";
 import TechnologiesSection from "./TechnologiesSection";
 import "../CommonFormStyles.css";
+import "./TechnologiesMain.css";
 
 const TechnologiesMain = (props) => {
   const technologiesSectionElements = props.technologiesData.map((object) => {
@@ -31,7 +32,7 @@ const TechnologiesMain = (props) => {
   };
 
   return (
-    <div className="common-section">
+    <div className="common-section technologies-section">
       <div className="common-container">
         <div className="form-container">
           <h2>Technologies, Frameworks {"&"} Projects</h2>

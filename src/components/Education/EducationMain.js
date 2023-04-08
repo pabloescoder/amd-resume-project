@@ -2,6 +2,7 @@ import React from "react";
 import NavigationArrows from "../NavigationArrows";
 import EducationSection from "./EducationSection";
 import "../CommonFormStyles.css";
+import "./EducationMain.css";
 
 const EducationMain = (props) => {
   const educationSectionElements = props.educationData.map((object) => {
@@ -31,7 +32,7 @@ const EducationMain = (props) => {
   };
 
   return (
-    <div className="common-section">
+    <div className="common-section education-section">
       <div className="common-container">
         <div className="form-container">
           <h2>Education Details</h2>

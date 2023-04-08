@@ -34,7 +34,7 @@ const CertificationsMain = (props) => {
   };
 
   return (
-    <div className="common-section">
+    <div className="common-section certification-section">
       <div className="common-container certifications-common-container">
         <div className="form-container">
           <h2>Achievements {"&"} Certifications</h2>
