@@ -279,6 +279,7 @@ function App() {
           educationData={educationData}
           technologiesData={technologiesData}
           certificationsData={certificationsData}
+          editDetails={decrementCurrentSection}
         />
       )}
     </div>
