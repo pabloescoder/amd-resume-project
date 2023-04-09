@@ -1,7 +1,27 @@
-import React from "react";
+import React, { useRef } from "react";
 import "./GenerateResume.css";
+import html2canvas from "html2canvas";
+import { jsPDF } from "jspdf";
 
 const GenerateResume = (props) => {
+  const printRef = useRef();
+
+  // Reference Blog for HTML to PDF logic https://www.robinwieruch.de/react-component-to-pdf/
+
+  const handleDownloadPdf = async () => {
+    const element = printRef.current;
+    const canvas = await html2canvas(element, { scale: 2 });
+    const data = canvas.toDataURL("image/png");
+
+    const pdf = new jsPDF();
+    const imgProperties = pdf.getImageProperties(data);
+    const pdfWidth = pdf.internal.pageSize.getWidth();
+    const pdfHeight = (imgProperties.height * pdfWidth) / imgProperties.width;
+
+    pdf.addImage(data, "PNG", 0, 0, pdfWidth, pdfHeight);
+    pdf.save("print.pdf");
+  };
+
   const {
     basicData,
     workData,
@@ -65,12 +85,32 @@ const GenerateResume = (props) => {
       <div className="download-details">
         <h1>
           Your PDF has been generated! You can see a preview of the generated
-          Resume below
+          resume below.
         </h1>
-        <button id="generate-resume-btn">Download</button>
+        <p>
+          Note that this preview is just for representational purposes, the
+          actual pdf might differ in height based on the amount of content you
+          have.
+          <br />
+          The preview is not that accurate on mobile due to the limited width of
+          a mobile screen but the <u>pdf will be formatted properly</u> if you{" "}
+          <u>download and open it</u>.
+          <br />
+          Although <u>it works on a mobile</u>, it is recommended that you
+          generate your resume using a bigger screen like that of a computer or
+          laptop for optimal experience.
+        </p>
+        <div className="generate-section-buttons">
+          <button id="generate-resume-btn" onClick={handleDownloadPdf}>
+            Download
+          </button>
+          <button id="go-back-btn" onClick={props.editDetails}>
+            Edit Details
+          </button>
+        </div>
       </div>
       <div className="generate-resume-container">
-        <div className="main-resume">
+        <div className="main-resume" ref={printRef}>
           <div className="top">
             <h1>{`${basicData.firstName} ${basicData.lastName}`}</h1>
             <div className="links">
