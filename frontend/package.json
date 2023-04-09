@@ -1,5 +1,5 @@
 {
-  "name": "resume-builder",
+  "name": "resume-builder-frontend",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
