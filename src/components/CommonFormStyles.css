@@ -255,6 +255,13 @@ button[type="add-new-section"]:active,
   }
 }
 
+@media screen and (max-width: 440px) {
+  .common-container {
+    padding: 1rem;
+    margin: 2rem;
+  }
+}
+
 @media screen and (max-width: 380px) {
   .form_field {
     font-size: 1.2rem;
