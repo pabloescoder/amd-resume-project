@@ -34,7 +34,7 @@ const CertificationsMain = (props) => {
   };
 
   return (
-    <div className="common-section">
+    <div className="common-section certification-section">
       <div className="common-container certifications-common-container">
         <div className="form-container">
           <h2>Achievements {"&"} Certifications</h2>
@@ -48,7 +48,9 @@ const CertificationsMain = (props) => {
             Delete the last section
           </button>
         </div>
-        <button id="generate-resume">Generate Resume!</button>
+        <button id="generate-resume" onClick={props.incrementCurrentSection}>
+          Generate Resume!
+        </button>
         <NavigationArrows prevPage={props.prevPage} />
       </div>
     </div>

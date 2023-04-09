@@ -20,9 +20,75 @@ button[type="add-new-section"] {
   border-color: rgb(0, 131, 17);
 }
 
+@media screen and (max-width: 772px) {
+  .certification-section .form-container .form_field {
+    font-size: 1.1rem;
+  }
+  .certification-section .form_field:placeholder-shown ~ .form_label {
+    font-size: 1rem;
+  }
+  .certification-section .form_field ~ .form_label {
+    font-size: 1rem;
+  }
+  .certification-section .form-label {
+    font-size: 1rem;
+  }
+}
+
+@media screen and (max-width: 670px) {
+  .certification-section .form_field:placeholder-shown ~ .form_label {
+    font-size: 0.9rem;
+  }
+  .certification-section .form_field ~ .form_label {
+    font-size: 0.9rem;
+  }
+  .certification-section .form-label {
+    font-size: 0.9rem;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .certification-section .form-container .form_field {
+    font-size: 1.1rem;
+  }
+  .certification-section .form_field:placeholder-shown ~ .form_label {
+    font-size: 1rem;
+  }
+  .certification-section .form_field ~ .form_label {
+    font-size: 1rem;
+  }
+  .certification-section .form-label {
+    font-size: 1rem;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .certification-section .form_field:placeholder-shown ~ .form_label {
+    font-size: 0.9rem;
+  }
+  .certification-section .form_field ~ .form_label {
+    font-size: 0.9rem;
+  }
+  .certification-section .form-label {
+    font-size: 0.9rem;
+  }
+}
+
 @media screen and (max-width: 460px) {
   #generate-resume {
     padding: 1rem 2.5rem;
     font-size: 1.1rem;
+  }
+}
+
+@media screen and (max-width: 450px) {
+  .certification-section .form_field:placeholder-shown ~ .form_label {
+    font-size: 0.9rem;
+  }
+  .certification-section .form_field ~ .form_label {
+    font-size: 0.8rem;
+  }
+  .certification-section .form-label {
+    font-size: 0.8rem;
   }
 }
