@@ -10,7 +10,7 @@ const CertificationsSection = (props) => {
             className="form_field"
             placeholder="Achievement / Certification"
             name="certificateTitle"
-            id="certificateTitle"
+            id={`certificateTitle${props.id}`}
             value={
               props.certificationsData[props.id - 1] &&
               props.certificationsData[props.id - 1].certificateTitle
@@ -18,7 +18,7 @@ const CertificationsSection = (props) => {
             onChange={(e) => props.onChange(e, props.id)}
             required
           />
-          <label htmlFor="certificateTitle" className="form_label">
+          <label htmlFor={`certificateTitle${props.id}`} className="form_label">
             Achievement / Certification
           </label>
         </div>
@@ -27,14 +27,14 @@ const CertificationsSection = (props) => {
             className="form_field"
             placeholder="Certifying Organisation (Optional)"
             name="certifyingOrg"
-            id="certifyingOrg"
+            id={`certifyingOrg${props.id}`}
             value={
               props.certificationsData[props.id - 1] &&
               props.certificationsData[props.id - 1].certifyingOrg
             }
             onChange={(e) => props.onChange(e, props.id)}
           />
-          <label htmlFor="certifyingOrg" className="form_label">
+          <label htmlFor={`certifyingOrg${props.id}`} className="form_label">
             Certifying Organisation (Optional)
           </label>
         </div>
