@@ -92,13 +92,9 @@ const GenerateResume = (props) => {
           actual pdf might differ in height based on the amount of content you
           have.
           <br />
-          The preview is not that accurate on mobile due to the limited width of
-          a mobile screen but the <u>pdf will be formatted properly</u> if you{" "}
-          <u>download and open it</u>.
-          <br />
-          Although <u>it works on a mobile</u>, it is recommended that you
-          generate your resume using a bigger screen like that of a computer or
-          laptop for optimal experience.
+          If your pdf gets cut off at a certain length then it means that your
+          text content is too long to create a single page A4 resume, please
+          click on edit details and reduce the content accordingly.
         </p>
         <div className="generate-section-buttons">
           <button id="generate-resume-btn" onClick={handleDownloadPdf}>

@@ -17,7 +17,7 @@ const BasicDetails = (props) => {
                   placeholder="First Name"
                   name="firstName"
                   id="firstName"
-                  value={props.basicData.firstname}
+                  value={props.basicData.firstName}
                   onChange={(e) => props.onChange(e)}
                   required
                 />
