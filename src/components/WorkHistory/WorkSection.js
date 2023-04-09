@@ -57,7 +57,7 @@ const WorkSection = (props) => {
             className="form_field"
             placeholder="Job Title"
             name="jobTitle"
-            id="jobTitle"
+            id={`jobTitle${props.id}`}
             value={
               props.workData[props.id - 1] &&
               props.workData[props.id - 1].jobTitle
@@ -65,7 +65,7 @@ const WorkSection = (props) => {
             onChange={(e) => props.onChange(e, props.id)}
             required
           />
-          <label htmlFor="jobTitle" className="form_label">
+          <label htmlFor={`jobTitle${props.id}`} className="form_label">
             Job Title
           </label>
         </div>
@@ -74,7 +74,7 @@ const WorkSection = (props) => {
             className="form_field"
             placeholder="Employer"
             name="employer"
-            id="employer"
+            id={`employer${props.id}`}
             value={
               props.workData[props.id - 1] &&
               props.workData[props.id - 1].employer
@@ -82,7 +82,7 @@ const WorkSection = (props) => {
             onChange={(e) => props.onChange(e, props.id)}
             required
           />
-          <label htmlFor="employer" className="form_label">
+          <label htmlFor={`employer${props.id}`} className="form_label">
             Employer
           </label>
         </div>
@@ -94,14 +94,14 @@ const WorkSection = (props) => {
             className="form_field"
             placeholder="City"
             name="city"
-            id="city"
+            id={`city${props.id}`}
             value={
               props.workData[props.id - 1] && props.workData[props.id - 1].city
             }
             onChange={(e) => props.onChange(e, props.id)}
             required
           />
-          <label htmlFor="city" className="form_label">
+          <label htmlFor={`city${props.id}`} className="form_label">
             City
           </label>
         </div>
@@ -110,7 +110,7 @@ const WorkSection = (props) => {
             className="form_field"
             placeholder="Country"
             name="country"
-            id="country"
+            id={`country${props.id}`}
             value={
               props.workData[props.id - 1] &&
               props.workData[props.id - 1].country
@@ -118,7 +118,7 @@ const WorkSection = (props) => {
             onChange={(e) => props.onChange(e, props.id)}
             required
           />
-          <label htmlFor="country" className="form_label">
+          <label htmlFor={`country${props.id}`} className="form_label">
             Country
           </label>
         </div>
@@ -130,7 +130,7 @@ const WorkSection = (props) => {
             className="form_field"
             placeholder="Start Date"
             name="startDate"
-            id="startDate"
+            id={`startDate${props.id}`}
             value={
               props.workData[props.id - 1] &&
               props.workData[props.id - 1].startDate
@@ -138,7 +138,7 @@ const WorkSection = (props) => {
             onChange={(e) => props.onChange(e, props.id)}
             required
           />
-          <label htmlFor="startDate" className="form_label">
+          <label htmlFor={`startDate${props.id}`} className="form_label">
             Start Date
           </label>
         </div>
@@ -147,7 +147,7 @@ const WorkSection = (props) => {
             className="form_field"
             placeholder="End Date"
             name="endDate"
-            id="endDate"
+            id={`endDate${props.id}`}
             value={
               props.workData[props.id - 1] &&
               props.workData[props.id - 1].endDate
@@ -155,7 +155,7 @@ const WorkSection = (props) => {
             onChange={(e) => props.onChange(e, props.id)}
             required
           />
-          <label htmlFor="endDate" className="form_label">
+          <label htmlFor={`endDate${props.id}`} className="form_label">
             End Date
           </label>
         </div>

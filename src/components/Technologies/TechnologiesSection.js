@@ -10,7 +10,7 @@ const TechnologiesSection = (props) => {
             className="form_field"
             placeholder="Project Name"
             name="project"
-            id="project"
+            id={`project${props.id}`}
             value={
               props.technologiesData[props.id - 1] &&
               props.technologiesData[props.id - 1].project
@@ -18,7 +18,7 @@ const TechnologiesSection = (props) => {
             onChange={(e) => props.onChange(e, props.id)}
             required
           />
-          <label htmlFor="project" className="form_label">
+          <label htmlFor={`project${props.id}`} className="form_label">
             Project Name
           </label>
         </div>
@@ -27,7 +27,7 @@ const TechnologiesSection = (props) => {
             className="form_field"
             placeholder="Technologies / Frameworks used"
             name="technology"
-            id="technology"
+            id={`technology${props.id}`}
             value={
               props.technologiesData[props.id - 1] &&
               props.technologiesData[props.id - 1].technology
@@ -35,7 +35,7 @@ const TechnologiesSection = (props) => {
             onChange={(e) => props.onChange(e, props.id)}
             required
           />
-          <label htmlFor="technology" className="form_label">
+          <label htmlFor={`technology${props.id}`} className="form_label">
             Technologies / Frameworks used
           </label>
         </div>
@@ -47,14 +47,14 @@ const TechnologiesSection = (props) => {
             className="form_field"
             placeholder="Demo Link (Optional)"
             name="demoLink"
-            id="demoLink"
+            id={`demoLink${props.id}`}
             value={
               props.technologiesData[props.id - 1] &&
               props.technologiesData[props.id - 1].demoLink
             }
             onChange={(e) => props.onChange(e, props.id)}
           />
-          <label htmlFor="demoLink" className="form_label">
+          <label htmlFor={`demoLink${props.id}`} className="form_label">
             Demo Link (Optional)
           </label>
         </div>
@@ -63,14 +63,14 @@ const TechnologiesSection = (props) => {
             className="form_field"
             placeholder="Repository Link (Optional)"
             name="repoLink"
-            id="repoLink"
+            id={`repoLink${props.id}`}
             value={
               props.technologiesData[props.id - 1] &&
               props.technologiesData[props.id - 1].repoLink
             }
             onChange={(e) => props.onChange(e, props.id)}
           />
-          <label htmlFor="repoLink" className="form_label">
+          <label htmlFor={`repoLink${props.id}`} className="form_label">
             Repository Link (Optional)
           </label>
         </div>
