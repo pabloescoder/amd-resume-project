@@ -8,18 +8,18 @@ const transporter = nodemailer.createTransport({
   },
 });
 
-const sendVerificationMail = async (receiverEmail, verificationJWT) => {
+const sendTestMail = async (receiverEmail) => {
   try {
     await transporter.sendMail({
       to: receiverEmail,
       from: process.env.SENDINBLUE_SMTP_USER,
       subject: "ResFast | Click on this link to verify your email",
       html: `<p>Thank you for signing up for a new ResFast account! Please click on the link below so that we can verify your account and provide you with full functionality.</p>
-               <a href=${process.env.API_HOST}/verify/${receiverEmail}/${verificationJWT}>Click here to verify</a>`,
+               <a href="www.google.com">Link Here</a>`,
     });
   } catch (err) {
     console.log(err);
   }
 };
 
-module.exports = sendVerificationMail;
+module.exports = sendTestMail;
