@@ -23,6 +23,7 @@ app.use(express.json());
 app.use("/register", require("./routes/register"));
 app.use("/verify", require("./routes/api/verify"));
 app.use("/auth", require("./routes/auth"));
+app.use("/save", require("./routes/api/saveResume"));
 
 mongoose.connection.once("open", () => {
   console.log("Connected to MongoDB");
