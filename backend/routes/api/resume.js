@@ -5,6 +5,7 @@ const verifyJWT = require("../../middleware/verifyJWT");
 
 router
   .route("/")
+  .get(verifyJWT, resumeController.handleFetchSavedResume)
   .post(verifyJWT, resumeController.handleSaveNewResume)
   .put(verifyJWT, resumeController.handleModifyResume);
 
