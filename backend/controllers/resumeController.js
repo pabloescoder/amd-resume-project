@@ -80,4 +80,25 @@ const handleModifyResume = async (req, res) => {
   }
 };
 
-module.exports = { handleSaveNewResume, handleModifyResume };
+const handleFetchSavedResume = async (req, res) => {
+  const user = req.user; // Received from verifyJWT middleware
+  const resumeTitle = req.body.resumeTitle;
+  if (!resumeTitle)
+    return res.status(400).json({ error: "Resume title not provided" });
+  const resumeData = await Resume.findOne({
+    username: user,
+    resumeTitle,
+  }).exec();
+  if (!resumeData) {
+    return res
+      .status(204)
+      .json({ message: `No resume with a title ${resumeTitle} found in DB` });
+  }
+  res.status(200).json(resumeData);
+};
+
+module.exports = {
+  handleSaveNewResume,
+  handleModifyResume,
+  handleFetchSavedResume,
+};
