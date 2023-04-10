@@ -6,10 +6,7 @@ const tokenSchema = new Schema({
     type: String,
     required: true,
   },
-  verifyToken: {
-    type: String,
-    required: true,
-  },
+  verifyToken: String,
 });
 
 module.exports = mongoose.model("Token", tokenSchema);
