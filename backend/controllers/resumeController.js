@@ -2,7 +2,7 @@ const Resume = require("../model/Resume");
 
 const handleSaveNewResume = async (req, res) => {
   const user = req.user; // Received from verifyJWT middleware
-  const data = req.body.data;
+  const data = req.body;
   if (!data) {
     return res.status(400).json({
       error: "No data provided",
@@ -40,7 +40,7 @@ const handleSaveNewResume = async (req, res) => {
 
 const handleModifyResume = async (req, res) => {
   const user = req.user; // Received from verifyJWT middleware
-  const data = req.body.data;
+  const data = req.body;
   if (!data) {
     return res.status(400).json({
       error: "No data provided",
