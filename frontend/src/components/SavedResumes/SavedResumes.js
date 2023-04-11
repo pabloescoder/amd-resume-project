@@ -9,9 +9,32 @@ const SavedResumes = ({
   savedResumeTitles,
   setSavedResumeTitles,
   handleCloseSavedResumes,
+  setBasicData,
+  setWorkData,
+  setEducationData,
+  setTechnologiesData,
+  setCertificationsData,
+  setCurrentSection,
 }) => {
   const { auth } = useContext(AuthContext);
   const axios = useAxiosPrivate();
+
+  const handleResumeTitleClick = async (title) => {
+    try {
+      const response = await axios.get(
+        `${process.env.REACT_APP_API_HOST}/resume/${title}`,
+        {
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: "Bearer " + auth.accessToken,
+          },
+        }
+      );
+      handleLoadSavedResume(response.data);
+    } catch (err) {
+      console.log(err);
+    }
+  };
 
   useEffect(() => {
     if (isLoggedIn && auth?.accessToken && savedResumeTitles?.length === 0) {
@@ -26,7 +49,6 @@ const SavedResumes = ({
               },
             }
           );
-
           setSavedResumeTitles(response.data);
         } catch (err) {
           console.log(err);
@@ -40,18 +62,156 @@ const SavedResumes = ({
   let savedResumeElements = savedResumeTitles.map((resumeObj) => (
     <section
       key={resumeObj._id}
-      className="resume-element"
-      onClick={() => console.log(`Clicked ${resumeObj.resumeTitle}`)}
+      className="resume-element hover-effect"
+      onClick={() => handleResumeTitleClick(resumeObj.resumeTitle)}
     >
       {resumeObj.resumeTitle}
     </section>
   ));
 
   let noResumesFound = (
-    <section className="resume-element">
+    <section className="resume-element hover-effect">
       {"No saved resumes found in your account :("}
     </section>
   );
+
+  const handleLoadSavedResume = (data) => {
+    const {
+      basicData,
+      workData,
+      educationData,
+      technologiesData,
+      certificationsData,
+    } = data;
+
+    setBasicData({
+      firstName: "",
+      lastName: "",
+      profession: "",
+      city: "",
+      country: "",
+      pincode: "",
+      phone: "",
+      email: "",
+      github: "",
+      linkedin: "",
+      twitter: "",
+      ...basicData,
+    });
+
+    if (!workData?.length) {
+      setWorkData([
+        {
+          id: 1,
+          jobTitle: "",
+          employer: "",
+          city: "",
+          country: "",
+          startDate: "",
+          endDate: "",
+          jobDescription: "",
+        },
+      ]);
+    } else {
+      setWorkData(
+        workData.map((workItem) => {
+          return {
+            id: 1,
+            jobTitle: "",
+            employer: "",
+            city: "",
+            country: "",
+            startDate: "",
+            endDate: "",
+            jobDescription: "",
+            ...workItem,
+          };
+        })
+      );
+    }
+
+    if (!educationData?.length) {
+      setEducationData([
+        {
+          id: 1,
+          schoolName: "",
+          schoolLocation: "",
+          degree: "",
+          fieldOfStudy: "",
+          startDate: "",
+          endDate: "",
+          eduDescription: "",
+        },
+      ]);
+    } else {
+      setEducationData(
+        educationData.map((educationItem) => {
+          return {
+            id: 1,
+            schoolName: "",
+            schoolLocation: "",
+            degree: "",
+            fieldOfStudy: "",
+            startDate: "",
+            endDate: "",
+            eduDescription: "",
+            ...educationItem,
+          };
+        })
+      );
+    }
+
+    if (!technologiesData?.length) {
+      setTechnologiesData([
+        {
+          id: 1,
+          technology: "",
+          project: "",
+          demoLink: "",
+          repoLink: "",
+          additionalDetails: "",
+        },
+      ]);
+    } else {
+      setTechnologiesData(
+        technologiesData.map((technologiesItem) => {
+          return {
+            id: 1,
+            technology: "",
+            project: "",
+            demoLink: "",
+            repoLink: "",
+            additionalDetails: "",
+            ...technologiesItem,
+          };
+        })
+      );
+    }
+
+    if (!certificationsData?.length) {
+      setCertificationsData([
+        {
+          id: 1,
+          certificateTitle: "",
+          certifyingOrg: "",
+        },
+      ]);
+    } else {
+      setCertificationsData(
+        certificationsData.map((certificationsItem) => {
+          return {
+            id: 1,
+            certificateTitle: "",
+            certifyingOrg: "",
+            ...certificationsItem,
+          };
+        })
+      );
+    }
+
+    handleCloseSavedResumes();
+    setCurrentSection(1);
+  };
 
   return (
     <div className="common-section saved-resumes-section">

@@ -259,6 +259,12 @@ function App() {
           savedResumeTitles={savedResumeTitles}
           setSavedResumeTitles={(data) => setSavedResumeTitles(data)}
           handleCloseSavedResumes={() => setSavedResumesSection(false)}
+          setBasicData={setBasicData}
+          setWorkData={setWorkData}
+          setEducationData={setEducationData}
+          setTechnologiesData={setTechnologiesData}
+          setCertificationsData={setCertificationsData}
+          setCurrentSection={setCurrentSection}
         />
       )}
       {currentSection === 1 && !savedResumesSection && (
