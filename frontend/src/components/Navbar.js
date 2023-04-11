@@ -7,7 +7,12 @@ import Button from "@mui/material/Button";
 import { IconButton } from "@mui/material";
 import logo from "../images/logo.png";
 
-const Navbar = ({ onLogoClick }) => {
+const Navbar = ({
+  onLogoClick,
+  handleSignUpClick,
+  handleLoginClick,
+  isLoggedIn,
+}) => {
   return (
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="static" style={{ backgroundColor: "#2026d6" }}>
@@ -27,11 +32,36 @@ const Navbar = ({ onLogoClick }) => {
               }}
             ></img>
           </IconButton>
-          <Typography variant="h6" component="div" sx={{ flexGrow: 1, ml: 1 }}>
+          <Typography
+            variant="h6"
+            component="div"
+            sx={{ flexGrow: 1, ml: 1, fontFamily: "Inter, sans-serif" }}
+          >
             ResFast
           </Typography>
-          <Button color="inherit">Login</Button>
-          <Button color="inherit">Saved Resumes</Button>
+          {!isLoggedIn && (
+            <Button
+              color="inherit"
+              sx={{ fontFamily: "Inter, sans-serif" }}
+              onClick={handleSignUpClick}
+            >
+              Sign Up
+            </Button>
+          )}
+          {!isLoggedIn && (
+            <Button
+              color="inherit"
+              sx={{ fontFamily: "Inter, sans-serif" }}
+              onClick={handleLoginClick}
+            >
+              Login
+            </Button>
+          )}
+          {isLoggedIn && (
+            <Button color="inherit" sx={{ fontFamily: "Inter, sans-serif" }}>
+              Saved Resumes
+            </Button>
+          )}
         </Toolbar>
       </AppBar>
     </Box>
