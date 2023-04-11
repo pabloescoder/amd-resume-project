@@ -7,9 +7,14 @@ import EducationMain from "./components/Education/EducationMain";
 import TechnologiesMain from "./components/Technologies/TechnologiesMain";
 import CertificationsMain from "./components/Certifications/CertificationsMain";
 import GenerateResume from "./components/GenerateResume/GenerateResume";
+import Login from "./components/Signup_Login/Login";
+import Signup from "./components/Signup_Login/Signup";
 
 function App() {
   const [currentSection, setCurrentSection] = useState(0);
+  const [openSignUp, setOpenSignUp] = useState(false);
+  const [openLogin, setOpenLogin] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [basicData, setBasicData] = useState({
     firstName: "",
     lastName: "",
@@ -232,7 +237,12 @@ function App() {
     <div className="App">
       {currentSection === 0 && <Homepage nextPage={incrementCurrentSection} />}
       {currentSection !== 0 && (
-        <Navbar onLogoClick={() => setCurrentSection(0)} />
+        <Navbar
+          onLogoClick={() => setCurrentSection(0)}
+          handleSignUpClick={() => setOpenSignUp(true)}
+          handleLoginClick={() => setOpenLogin(true)}
+          isLoggedIn={isLoggedIn}
+        />
       )}
       {currentSection === 1 && (
         <BasicDetails
@@ -292,6 +302,23 @@ function App() {
           editDetails={decrementCurrentSection}
         />
       )}
+      <Signup
+        open={openSignUp}
+        handleOpen={() => setOpenSignUp(true)}
+        handleClose={() => setOpenSignUp(false)}
+      />
+      <Login
+        open={openLogin}
+        handleOpen={() => setOpenLogin(true)}
+        handleClose={() => setOpenLogin(false)}
+        handleSignUpClick={() => {
+          setOpenLogin(false);
+          setOpenSignUp(true);
+        }}
+        handleLoginSuccess={() => {
+          setIsLoggedIn(true);
+        }}
+      />
     </div>
   );
 }
