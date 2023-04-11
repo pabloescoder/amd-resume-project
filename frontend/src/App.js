@@ -17,7 +17,7 @@ function App() {
   const [savedResumesSection, setSavedResumesSection] = useState(false);
   const [openSignUp, setOpenSignUp] = useState(false);
   const [openLogin, setOpenLogin] = useState(false);
-  const [isLoggedIn, setIsLoggedIn] = useState(false); // Change
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [basicData, setBasicData] = useState({
     firstName: "",
     lastName: "",
