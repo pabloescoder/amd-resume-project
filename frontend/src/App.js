@@ -13,10 +13,11 @@ import SavedResumes from "./components/SavedResumes/SavedResumes";
 
 function App() {
   const [currentSection, setCurrentSection] = useState(0);
+  const [savedResumeTitles, setSavedResumeTitles] = useState([]);
   const [savedResumesSection, setSavedResumesSection] = useState(false);
   const [openSignUp, setOpenSignUp] = useState(false);
   const [openLogin, setOpenLogin] = useState(false);
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(false); // Change
   const [basicData, setBasicData] = useState({
     firstName: "",
     lastName: "",
@@ -254,6 +255,9 @@ function App() {
       )}
       {currentSection !== 0 && savedResumesSection && (
         <SavedResumes
+          isLoggedIn={isLoggedIn}
+          savedResumeTitles={savedResumeTitles}
+          setSavedResumeTitles={(data) => setSavedResumeTitles(data)}
           handleCloseSavedResumes={() => setSavedResumesSection(false)}
         />
       )}

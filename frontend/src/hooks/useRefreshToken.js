@@ -3,28 +3,23 @@ import { useContext } from "react";
 import AuthContext from "../context/AuthProvider";
 
 const useRefreshToken = () => {
-  // console.log(auth.refresh);
-  // const { auth } = useContext(AuthContext);
   const { setauth } = useContext(AuthContext);
   const { refreshToken } = useContext(AuthContext);
-  // console.log("refreshTOken:", refreshToken);
   const refresh = async () => {
     // console.log(refreshToken);
     // console.log("previous access token=>", auth);
     try {
       const response = await axios({
-        method: "post",
-        url: "http://127.0.0.1:8000/user/api/token/refresh/", // https://httpbin.org/post <- For Testing
+        method: "get",
+        url: `${process.env.REACT_APP_API_HOST}/refresh/`,
         data: { refreshToken: refreshToken },
         headers: {
           "Content-Type": "application/json",
-          // Authorization: "Bearer " + auth.accessToken,
         },
       });
-
-      // console.log("response.data.access", response.data.access);
-      setauth(response.data.access);
-      return response.data.access;
+      console.log(response.accessToken);
+      setauth(response.data.accessToken);
+      return response.data.accessToken;
     } catch (error) {}
   };
   return refresh;

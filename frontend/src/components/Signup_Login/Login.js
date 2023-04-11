@@ -60,11 +60,10 @@ export default function Login({
       // console.log(response.data);
       //   console.log(response.accessToken);
       //   console.log(JSON.stringify(response));
-      const accessToken = response?.data?.tokens?.access;
-      console.log(response.data);
+      const accessToken = response?.data?.accessToken;
       setauth({ accessToken });
-      setrefreshToken(response?.data?.tokens?.refresh);
-      localStorage.setItem("refreshToken", response?.data?.tokens?.refresh);
+      setrefreshToken(response?.data?.refreshToken);
+      localStorage.setItem("refreshToken", response?.data?.refreshToken);
       setIsLoginSuccessful(true);
       setLoginData({
         user: "",
