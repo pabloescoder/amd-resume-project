@@ -17,12 +17,12 @@ const handleLogin = async (req, res) => {
     const accessToken = jwt.sign(
       { username: foundUser.username },
       process.env.ACCESS_TOKEN_SECRET,
-      { expiresIn: "30s" } // Change to 1h for production
+      { expiresIn: "1h" } // Change to 1h for production
     );
     const refreshToken = jwt.sign(
       { username: foundUser.username },
       process.env.REFRESH_TOKEN_SECRET,
-      { expiresIn: "1d" } // Change to 14 days for production
+      { expiresIn: "14d" } // Change to 14 days for production
     );
 
     // Save refreshToken with current user in DB
