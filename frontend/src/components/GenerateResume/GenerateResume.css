@@ -12,7 +12,8 @@
 }
 
 #generate-resume-btn,
-#go-back-btn {
+#go-back-btn,
+#style-btn {
   align-self: center;
   appearance: none;
   background-color: transparent;
@@ -30,6 +31,7 @@
   margin: 0;
   margin-top: 0.5rem;
   margin-bottom: 0.5rem;
+  margin-left: 1rem;
   min-height: 60px;
   min-width: 0;
   outline: none;
@@ -45,12 +47,14 @@
 }
 
 #generate-resume-btn:disabled,
-#go-back-btn:disabled {
+#go-back-btn:disabled,
+#style-btn:disabled {
   pointer-events: none;
 }
 
 #generate-resume-btn:hover,
-#go-back-btn:hover {
+#go-back-btn:hover,
+#style-btn:hover {
   color: #fff;
   background-color: #1a1a1a;
   box-shadow: rgba(0, 0, 0, 0.25) 0 8px 15px;
@@ -58,17 +62,10 @@
 }
 
 #generate-resume-btn:active,
-#go-back-btn:hover {
+#go-back-btn:active,
+#style-btn:active {
   box-shadow: none;
   transform: translateY(0);
-}
-
-#generate-resume-btn {
-  margin-right: 1rem;
-}
-
-#go-back-btn {
-  margin-left: 1rem;
 }
 
 .generate-resume-container {

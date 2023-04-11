@@ -9,9 +9,11 @@ import CertificationsMain from "./components/Certifications/CertificationsMain";
 import GenerateResume from "./components/GenerateResume/GenerateResume";
 import Login from "./components/Signup_Login/Login";
 import Signup from "./components/Signup_Login/Signup";
+import SavedResumes from "./components/SavedResumes/SavedResumes";
 
 function App() {
   const [currentSection, setCurrentSection] = useState(0);
+  const [savedResumesSection, setSavedResumesSection] = useState(false);
   const [openSignUp, setOpenSignUp] = useState(false);
   const [openLogin, setOpenLogin] = useState(false);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -238,20 +240,31 @@ function App() {
       {currentSection === 0 && <Homepage nextPage={incrementCurrentSection} />}
       {currentSection !== 0 && (
         <Navbar
-          onLogoClick={() => setCurrentSection(0)}
+          handleLogoClick={() => {
+            setCurrentSection(0);
+            setSavedResumesSection(false);
+          }}
           handleSignUpClick={() => setOpenSignUp(true)}
           handleLoginClick={() => setOpenLogin(true)}
           isLoggedIn={isLoggedIn}
+          savedResumesSection={savedResumesSection}
+          handleShowSavedResumes={() => setSavedResumesSection(true)}
+          handleCloseSavedResumes={() => setSavedResumesSection(false)}
         />
       )}
-      {currentSection === 1 && (
+      {currentSection !== 0 && savedResumesSection && (
+        <SavedResumes
+          handleCloseSavedResumes={() => setSavedResumesSection(false)}
+        />
+      )}
+      {currentSection === 1 && !savedResumesSection && (
         <BasicDetails
           nextPage={incrementCurrentSection}
           basicData={basicData}
           onChange={handleBasicDataChange}
         />
       )}
-      {currentSection === 2 && (
+      {currentSection === 2 && !savedResumesSection && (
         <WorkHistory
           nextPage={incrementCurrentSection}
           prevPage={decrementCurrentSection}
@@ -262,7 +275,7 @@ function App() {
           handleEditorChange={handleWorkEditorChange}
         />
       )}
-      {currentSection === 3 && (
+      {currentSection === 3 && !savedResumesSection && (
         <EducationMain
           nextPage={incrementCurrentSection}
           prevPage={decrementCurrentSection}
@@ -272,7 +285,7 @@ function App() {
           onChange={handleEduDataChange}
         />
       )}
-      {currentSection === 4 && (
+      {currentSection === 4 && !savedResumesSection && (
         <TechnologiesMain
           nextPage={incrementCurrentSection}
           prevPage={decrementCurrentSection}
@@ -282,7 +295,7 @@ function App() {
           onChange={handleTechDataChange}
         />
       )}
-      {currentSection === 5 && (
+      {currentSection === 5 && !savedResumesSection && (
         <CertificationsMain
           prevPage={decrementCurrentSection}
           certificationsData={certificationsData}
@@ -292,7 +305,7 @@ function App() {
           incrementCurrentSection={incrementCurrentSection}
         />
       )}
-      {currentSection === 6 && (
+      {currentSection === 6 && !savedResumesSection && (
         <GenerateResume
           basicData={basicData}
           workData={workData}
@@ -300,6 +313,7 @@ function App() {
           technologiesData={technologiesData}
           certificationsData={certificationsData}
           editDetails={decrementCurrentSection}
+          isLoggedIn={isLoggedIn}
         />
       )}
       <Signup
