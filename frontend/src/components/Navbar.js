@@ -8,10 +8,13 @@ import { IconButton } from "@mui/material";
 import logo from "../images/logo.png";
 
 const Navbar = ({
-  onLogoClick,
+  handleLogoClick,
   handleSignUpClick,
   handleLoginClick,
   isLoggedIn,
+  savedResumesSection,
+  handleShowSavedResumes,
+  handleCloseSavedResumes,
 }) => {
   return (
     <Box sx={{ flexGrow: 1 }}>
@@ -21,7 +24,7 @@ const Navbar = ({
             size="small"
             edge="start"
             aria-label="website logo"
-            onClick={onLogoClick}
+            onClick={handleLogoClick}
           >
             <img
               src={logo}
@@ -57,9 +60,22 @@ const Navbar = ({
               Login
             </Button>
           )}
-          {isLoggedIn && (
-            <Button color="inherit" sx={{ fontFamily: "Inter, sans-serif" }}>
+          {isLoggedIn && !savedResumesSection && (
+            <Button
+              color="inherit"
+              sx={{ fontFamily: "Inter, sans-serif" }}
+              onClick={handleShowSavedResumes}
+            >
               Saved Resumes
+            </Button>
+          )}
+          {isLoggedIn && savedResumesSection && (
+            <Button
+              color="inherit"
+              sx={{ fontFamily: "Inter, sans-serif" }}
+              onClick={handleCloseSavedResumes}
+            >
+              Go back
             </Button>
           )}
         </Toolbar>

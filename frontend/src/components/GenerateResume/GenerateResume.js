@@ -88,13 +88,17 @@ const GenerateResume = (props) => {
           resume below.
         </h1>
         <p>
-          Note that this preview is just for representational purposes, the
-          actual pdf might differ in height based on the amount of content you
-          have.
-          <br />
-          If your pdf gets cut off at a certain length then it means that your
-          text content is too long to create a single page A4 resume, please
-          click on edit details and reduce the content accordingly.
+          This preview is just for representational purposes, the actual pdf
+          might differ in height based on the amount of content you have. If
+          your pdf gets cut off at a certain length then it means that your text
+          content is too long to create a single page A4 resume, please click on
+          edit details and reduce the content accordingly.
+          <br /> <br />
+          If you want to save the info entered in this form then you need to be
+          logged in first, then click on either "Update Saved" to update a
+          previously saved resume, or "Save New" to save it as a new resume in
+          your account. Saved resumes can be accessed by clicking the link for
+          the same on the navbar once you are logged in.
         </p>
         <div className="generate-section-buttons">
           <button id="generate-resume-btn" onClick={handleDownloadPdf}>
@@ -103,6 +107,12 @@ const GenerateResume = (props) => {
           <button id="go-back-btn" onClick={props.editDetails}>
             Edit Details
           </button>
+          {props.isLoggedIn && (
+            <>
+              <button id="style-btn">Update Saved</button>
+              <button id="style-btn">Save New</button>
+            </>
+          )}
         </div>
       </div>
       <div className="generate-resume-container">
