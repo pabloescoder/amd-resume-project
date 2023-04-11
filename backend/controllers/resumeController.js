@@ -97,8 +97,23 @@ const handleFetchSavedResume = async (req, res) => {
   res.status(200).json(resumeData);
 };
 
+const handleFetchAllResumeTitles = async (req, res) => {
+  const user = req.user; // Received from verifyJWT middleware
+  const resumeTitles = await Resume.find(
+    {
+      username: user,
+    },
+    { resumeTitle: 1 }
+  ).exec();
+  if (!resumeTitles) {
+    return res.status(204).json([]);
+  }
+  res.status(200).json(resumeTitles);
+};
+
 module.exports = {
   handleSaveNewResume,
   handleModifyResume,
   handleFetchSavedResume,
+  handleFetchAllResumeTitles,
 };
