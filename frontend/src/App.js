@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import Navbar from "./components/Navbar";
 import Homepage from "./components/Homepage";
 import BasicDetails from "./components/BasicDetails/BasicDetails";
 import WorkHistory from "./components/WorkHistory/WorkHistory";
@@ -70,10 +71,16 @@ function App() {
 
   const incrementCurrentSection = () => {
     setCurrentSection((prevValue) => prevValue + 1);
+    setTimeout(() => {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }, 0);
   };
 
   const decrementCurrentSection = () => {
     setCurrentSection((prevValue) => prevValue - 1);
+    setTimeout(() => {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }, 0);
   };
 
   const handleBasicDataChange = (event) => {
@@ -224,6 +231,9 @@ function App() {
   return (
     <div className="App">
       {currentSection === 0 && <Homepage nextPage={incrementCurrentSection} />}
+      {currentSection !== 0 && (
+        <Navbar onLogoClick={() => setCurrentSection(0)} />
+      )}
       {currentSection === 1 && (
         <BasicDetails
           nextPage={incrementCurrentSection}
