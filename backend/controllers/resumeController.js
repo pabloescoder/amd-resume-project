@@ -82,7 +82,7 @@ const handleModifyResume = async (req, res) => {
 
 const handleFetchSavedResume = async (req, res) => {
   const user = req.user; // Received from verifyJWT middleware
-  const resumeTitle = req.body.resumeTitle;
+  const resumeTitle = req.params.title;
   if (!resumeTitle)
     return res.status(400).json({ error: "Resume title not provided" });
   const resumeData = await Resume.findOne({

@@ -6,12 +6,13 @@ const isUserVerified = require("../../middleware/isUserVerified");
 
 router
   .route("/")
-  .get(verifyJWT, resumeController.handleFetchSavedResume)
   .post(verifyJWT, isUserVerified, resumeController.handleSaveNewResume)
   .put(verifyJWT, isUserVerified, resumeController.handleModifyResume);
 
 router
   .route("/all-titles")
   .get(verifyJWT, resumeController.handleFetchAllResumeTitles);
+
+router.route("/:title").get(verifyJWT, resumeController.handleFetchSavedResume);
 
 module.exports = router;

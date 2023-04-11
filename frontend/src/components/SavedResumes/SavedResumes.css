@@ -37,6 +37,12 @@
   border-radius: 5px;
 }
 
+.saved-resumes-common-container
+  .main-content
+  .resume-element.hover-effect:hover {
+  cursor: pointer;
+}
+
 @media screen and (max-width: 597px) {
   #style-btn.no-left-margin-mobile {
     margin-left: 0;
