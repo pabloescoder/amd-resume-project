@@ -1,13 +1,15 @@
-import React, { useRef } from "react";
+import React, { useRef, useState } from "react";
+import SaveResume from "./SaveResume";
 import "./GenerateResume.css";
 import html2canvas from "html2canvas";
 import { jsPDF } from "jspdf";
 
 const GenerateResume = (props) => {
   const printRef = useRef();
+  const [openSaveResume, setOpenSaveResume] = useState(false);
+  const [isUpdate, setIsUpdate] = useState(null);
 
   // Reference Blog for HTML to PDF logic https://www.robinwieruch.de/react-component-to-pdf/
-
   const handleDownloadPdf = async () => {
     const element = printRef.current;
     const canvas = await html2canvas(element, { scale: 2 });
@@ -20,6 +22,11 @@ const GenerateResume = (props) => {
 
     pdf.addImage(data, "PNG", 0, 0, pdfWidth, pdfHeight);
     pdf.save("print.pdf");
+  };
+
+  const handleSaveButtonClick = (isUpdate) => {
+    setIsUpdate(isUpdate);
+    setOpenSaveResume(true);
   };
 
   const {
@@ -109,11 +116,32 @@ const GenerateResume = (props) => {
           </button>
           {props.isLoggedIn && (
             <>
-              <button id="style-btn">Update Saved</button>
-              <button id="style-btn">Save New</button>
+              <button
+                id="style-btn"
+                onClick={() => handleSaveButtonClick(true)}
+              >
+                Update Saved
+              </button>
+              <button
+                id="style-btn"
+                onClick={() => handleSaveButtonClick(false)}
+              >
+                Save New
+              </button>
             </>
           )}
         </div>
+        <SaveResume
+          open={openSaveResume}
+          handleOpen={() => setOpenSaveResume(true)}
+          handleClose={() => setOpenSaveResume(false)}
+          isUpdate={isUpdate}
+          basicData={basicData}
+          workData={workData}
+          educationData={educationData}
+          technologiesData={technologiesData}
+          certificationsData={certificationsData}
+        />
       </div>
       <div className="generate-resume-container">
         <div className="main-resume" ref={printRef}>
