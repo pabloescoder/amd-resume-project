@@ -23,6 +23,7 @@ app.use(express.json());
 app.use("/register", require("./routes/register"));
 app.use("/verify", require("./routes/api/verify"));
 app.use("/auth", require("./routes/auth"));
+app.use("/refresh", require("./routes/refresh"));
 app.use("/resume", require("./routes/api/resume"));
 
 mongoose.connection.once("open", () => {
